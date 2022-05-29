@@ -1,0 +1,426 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   
+    <link href="https://fonts.googleapis.com/css?family=Cinzel+Decorative:400,700|Merriweather:400,700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    {% block header %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='stylesheets/home.css') }}">
+</head>
+
+<body>
+  
+  <navbar class="nav" id="ns" >
+    <a class="btn btn-outline-dark" href="" role="button" style="margin:1em; height:fit-content; border-color: white;font-size:2em;">FOODZEE</a> 
+    <div></div>
+            <form action="{{ url_for('search') }}" method="POST" style="display: flex; flex-direction: row;">
+                    <div class="col-12 col-md-3">
+                        <div class="form-group ">
+                            <select class="custom-select" id="locality" name="locality" placeholder="Locality"  style=" margin:2.5em 0.5em 0.5em 2.5em; width:30em; height:3em;">
+                                <option value="none">Select a Locality</option>
+                                <option value="Agra">Agra</option>
+                                <option value="Ahmedabad" >Ahmedabad</option>
+                                <option value="Allahabad">Allahabad</option>
+                                <option value="Amritsar" >Amritsar</option>
+                                <option value="Aurangabad" >Aurangabad</option>
+                                <option value="Bangalore" >Bangalore</option>
+                                <option value="Bhubaneswar">Bhubaneswar</option>
+                                <option value="Bhopal" >Bhopal</option>
+                                <option value="Chandigarh" >Chandigarh</option>
+                                <option value="Chennai" >Chennai</option>
+                                <option value="Coimbatore" >Coimbatore</option>
+                                <option value="Dehradun" >Dehradun</option>
+                                <option value="Faridabad" >Faridabad</option>
+                                <option value="Goa" >Goa</option>
+                                <option value="Guwahati" >Guwahati</option>
+                                <option value="Hyderabad" >Hyderabad</option>
+                                <option value="Indore" >Indore</option>
+                                <option value="Jaipur" >Jaipur</option>
+                                <option value="Kanpur" >Kanpur</option>
+                                <option value="Kochi" >Kochi</option>
+                                <option value="kolkata" >kolkata</option>
+                                <option value="Lucknow" >Lucknow</option>
+                                <option value="Ludhiana" >Ludhiana</option>
+                                <option value="Mangalore" >Mangalore</option>
+                                <option value="Mumbai" >Mumbai</option>
+                                <option value="Mysore" >Mysore</option>
+                                <option value="Nagpur" >Nagpur</option>
+                                <option value="Nashik" >Nashik</option>
+                                <option value="NCR" >NCR</option>
+                            </select>
+                                <!-- </select> -->
+                            </div>
+                          
+                        </div>
+                    
+                    <div  >
+                            <button class="submit-button" style=" margin:2.5em 0.25em 0em 20em;">Get Restaurants</button>   
+                    </div>
+                    
+                </form>
+            </div>
+        </div>
+      
+      </navbar>
+    </div>
+    <div id="demo" class="carousel slide" data-bs-ride="carousel">
+
+        <!-- Indicators/dots -->
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
+          <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+          <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+          <button type="button" data-bs-target="#demo" data-bs-slide-to="3"></button>
+        </div>
+        
+        <!-- The slideshow/carousel -->
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="../static/brooke-lark-wMzx2nBdeng-unsplash.jpg" alt="Los Angeles" class="d-block" style="width:100%">
+            <div class="carousel-caption" style="top:400px;right:7 cm;color: black;">
+              <h3 style="font-size:5vw;text-align:center;">Feeling</h3>
+              <h3 style="font-size:5vw;text-align:senter;right:0.2cm"> Hungry?</h3>
+              <p style="font-size:1.7vw;text-align:center;">Let deliciousness twirl in your mouth!</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="../static/second.jpg" alt="Chicago" class="d-block" style="width:100% ">
+            <div class="carousel-caption"style="top:300px;left:7 cm;">
+              <h3 style="font-size:7vw;text-align:left;">MADE</h3>
+              <h3 style="font-size:7vw;text-align:left;">WITH</h3>
+              <h3 style="font-size:7vw;text-align:left;">LOVE;</h3>
+              <p style="font-size:1.7vw;text-align:left;">Savoured with interest :)</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="../static/third.jpg" alt="New York" class="d-block" style="width:100%">
+            <div class="carousel-caption" style="top:400px;left:7 cm;">
+              <h3 style="font-size:5vw;text-align:left;">Giving your</h3>
+              <h3 style="font-size:5vw;text-align:left;">hunger</h3>
+              <h3 style="font-size:5vw;text-align:left;"> a brand</h3>
+              <h3 style="font-size:5vw;text-align:left;"> new taste!</h3>
+    
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="../static/patrick-fore-hoxqcGUheeo-unsplash.jpg" alt="New York" class="d-block" style="width:100%">
+            <div class="carousel-caption" style="top:250px;">
+              <h3 style="font-size:8vw;text-align:left;">Every</h3>
+              <h3 style="font-size:8vw;text-align:left;">Meal</h3>
+              <h3 style="font-size:8vw;right:3cm;text-align:left;">Matters.</h3>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Left and right controls/icons -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+          <span class="carousel-control-next-icon"></span>
+        </button>
+      </div>
+  
+      <div class=" cities " style="background-color:#242124 ;"><div style="display: flex;flex-direction: row;">
+        <div class="cities-title" style="color:white;">CITIES SERVED IN INDIA</div>
+        <img src="../static/location.png" alt="" srcset=""
+            style="height:30px ;width:20px; margin:5em 0 0 1em">
+      </div>
+      <div id="cards" style="display:flex; flex-direction: column;">
+            <div id="row-1" class="row"  style="align-items: center;margin-top:1em ; justify-content:center;">
+              <figure class="snip1218" >
+                <div class="image"><img src="../static/cities/agra.jpeg" />
+                
+                </div>
+                <figcaption>
+                  <h3>Agra</h3>
+                </figcaption>
+              </figure>
+              <figure class="snip1218 hover">
+                <div class="image"><img src="../static/cities/ahemdabad.jpeg"/>
+                
+                </div>
+                <figcaption>
+                  <h3>Ahmedabad</h3>
+                </figcaption>
+              </figure>
+              <figure class="snip1218">
+                <div class="image"><img src="../static/cities/allahabad.jpeg"/>
+                  
+                </div>
+                <figcaption>
+                  <h3>Allahabad</h3>
+                 
+                </figcaption>
+              </figure>
+              <figure class="snip1218">
+                <div class="image"><img src="../static/cities/Amritsar.jpeg" />
+                 
+                </div>
+                <figcaption>
+                  <h3>Amritsar</h3>
+                 
+                </figcaption>
+              </figure>
+              <figure class="snip1218">
+                <div class="image"><img src="../static/cities/Aurangabad.jpeg"/>
+                  
+                </div>
+                <figcaption>
+                  <h3>Aurangabad</h3>
+                 
+                </figcaption>
+              </figure>
+              <div id="row-2" class="row" style="align-items:center;padding: bottom 2em; justify-content:center;">
+                <figure class="snip1218" >
+                    <div class="image"><img src="../static/cities/bangalore.jpeg" />
+                     
+                    </div>
+                    <figcaption>
+                      <h3>Bangalore</h3>
+                    </figcaption>
+                  </figure>
+                  <figure class="snip1218 hover">
+                    <div class="image"><img src="../static/cities/Bhopal.jpeg" />
+                    </div>
+                    <figcaption>
+                      <h3>Bhopal</h3>
+                    </figcaption>
+                  </figure>
+                  <figure class="snip1218">
+                    <div class="image"><img src="../static/cities/bhubaneshwar.jpeg"/>
+                     
+                    </div>
+                    <figcaption>
+                      <h3>Bhubaneswar</h3>
+                     
+                    </figcaption>
+                  </figure>
+                  <figure class="snip1218">
+                    <div class="image"><img src="../static/cities/Chandigarh.jpeg" />
+                     
+                    </div>
+                    <figcaption>
+                      <h3>Chandigarh</h3>
+                     
+                    </figcaption>
+                  </figure>
+                  <figure class="snip1218">
+                    <div class="image"><img src="../static/cities/chennai.jpeg" />
+                      
+                    </div>
+                    <figcaption>
+                      <h3>Chennai</h3>
+                     
+                    </figcaption>
+                  </figure>
+                  <div id="row-3" class="row" style="align-items: center; justify-content:center;">
+                    <figure class="snip1218" >
+                        <div class="image"><img src="../static/cities/Coimbatore.jpeg" />
+                         
+                        </div>
+                        <figcaption>
+                          <h3>Coimbatore</h3>
+                        </figcaption>
+                      </figure>
+                      <figure class="snip1218 hover">
+                        <div class="image"><img src="../static/cities/Dehradun.jpeg" />
+                         
+                        </div>
+                        <figcaption>
+                          <h3>Dehradun</h3>
+                        </figcaption>
+                      </figure>
+                      <figure class="snip1218">
+                        <div class="image"><img src="../static/cities/Faridabad.jpeg"/>
+                         
+                        </div>
+                        <figcaption>
+                          <h3>Faridabad</h3>
+                         
+                        </figcaption>
+                      </figure>
+                       
+                      <figure class="snip1218">
+                        <div class="image"><img src="../static/cities/Goa.jpeg" />
+                         
+                        </div>
+                        <figcaption>
+                          <h3>Goa</h3>
+                         
+                        </figcaption>
+                      </figure>
+                      <figure class="snip1218 hover">
+                        <div class="image"><img src="../static/cities/Guwahati.jpeg" />
+                          
+                        </div>
+                        <figcaption>
+                          <h3>Guwahati</h3>
+                        </figcaption>
+                      </figure>
+                      <div id="row-4" class="row" style="align-items: center; justify-content:center;">
+\
+                          <figure class="snip1218">
+                            <div class="image"><img src="../static/cities/Hyderabad.jpeg" />
+                             
+                            </div>
+                            <figcaption>
+                              <h3>Hyderabad</h3>
+                             
+                            </figcaption>
+                          </figure>
+                          <figure class="snip1218">
+                            <div class="image"><img src="../static/cities/Indore.jpeg" "/>
+                              
+                            </div>
+                            <figcaption>
+                              <h3>Indore</h3>
+                             
+                            </figcaption>
+                          </figure>
+                          <figure class="snip1218">
+                            <div class="image"><img src="../static/cities/Jaipur.jpeg" />
+                             
+                            </div>
+                            <figcaption>
+                              <h3>Jaipur</h3>
+                             
+                            </figcaption>
+                            <figure class="snip1218" >
+                              <div class="image"><img src="../static/cities/Kanpur.jpeg" />
+                                
+                              </div>
+                              <figcaption>
+                                <h3>Kanpur</h3>
+                              </figcaption>
+                            </figure>
+                          </figure>
+                          <figure class="snip1218 hover">
+                            <div class="image"><img src="../static/cities/Kochi.jpeg" />
+                             
+                            </div>
+                            <figcaption>
+                              <h3>Kochi</h3>
+                            </figcaption>
+                          </figure>
+                          <figure class="snip1218">
+                            <div class="image"><img src="../static/cities/Kolkata.jpeg" />
+                             
+                            </div>
+                            <figcaption>
+                              <h3>Kolkata</h3>
+                             
+                            </figcaption>
+                          </figure>
+                          <div id="row-5" class="row" style="align-items: center; justify-content:center;">
+ 
+                              <figure class="snip1218">
+                                <div class="image"><img src="../static/cities/Lucknow.jpeg" />
+                                  
+                                </div>
+                                <figcaption>
+                                  <h3>Lucknow</h3>
+                                 
+                                </figcaption>
+                              </figure>
+                              <figure class="snip1218">
+                                <div class="image"><img src="../static/cities/Ludhiana.jpeg" />
+                                 
+                                </div>
+                                <figcaption>
+                                  <h3>Ludhiana</h3>
+                                 
+                                </figcaption>
+                              </figure>
+                              <figure class="snip1218" >
+                                <div class="image"><img src="../static/cities/Mangalore.jpeg" />
+                                 
+                                </div>
+                                <figcaption>
+                                  <h3>Mangalore</h3>
+                                </figcaption>
+                              </figure>
+                              <figure class="snip1218">
+                                <div class="image"><img src="../static/cities/mumbai.jpeg" />
+                                 
+                                </div>
+                                <figcaption>
+                                  <h3>Mumbai</h3>
+                                 
+                                </figcaption>
+                              </figure>
+                              
+                              <figure class="snip1218">
+                                <div class="image"><img src="../static/cities/Mysore.jpeg" />
+                              
+                                </div>
+                                <figcaption>
+                                  <h3>Mysore</h3>
+                                 
+                                </figcaption>
+                              </figure>
+                              <div id="row-6" class="row" style="align-items: center; justify-content:center;">
+                   
+                                  <figure class="snip1218">
+                                    <div class="image"><img src="../static/cities/Nagpur.jpeg" />
+                                     
+                                    </div>
+                                    <figcaption>
+                                      <h3>Nagpur</h3>
+                                     
+                                    </figcaption>
+                                  </figure>
+                                  
+                                    <figure class="snip1218" >
+                                        <div class="image"><img src="../static/cities/Nashik.jpeg" />
+                                         
+                                        </div>
+                                        <figcaption>
+                                          <h3>Nashik</h3>
+                                        </figcaption>
+                                      </figure>
+                                      <figure class="snip1218 hover">
+                                        <div class="image"><img src="../static/cities/new_delhi.jpeg" />
+                                         
+                                        </div>
+                                        <figcaption>
+                                          <h3>NCR</h3>
+                                        </figcaption>
+                                      </figure>
+                  <script>
+                        $(".hover").mouseleave(
+    function () {
+      $(this).removeClass("hover");
+    }
+  );</script>
+        </div>
+      </div>
+    </div>
+     <footer>
+         <hr style="color:gray;">
+
+         <div id="footer-content">
+             <div id="footer-text" style="color:white;margin-left: 6cm ;">Developed by Anusha Ajay Bamzai</div>
+             <div class="footer-link">
+                 <a href="https://github.com/anushabamzai"><img src="../static/git.png" alt="" srcset="" style="height: 25px;width:25px; margin:1.5em 0.2em 0 0.5em"></a>
+                 <a href="https://www.linkedin.com/in/anusha-bamzai-15b868214"><img src="../static/linkedin.png" alt="" srcset="" style="height: 25px;width:25px; margin:1.5em 0.5em 0 0em"></a>
+             </div>
+
+     </footer>
+   
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js " integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n " crossorigin="anonymous "></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js " integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo " crossorigin="anonymous "></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js " integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6 " crossorigin="anonymous "></script>
+    {% endblock %}
+</body>
+
+</html>

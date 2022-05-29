@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Cinzel+Decorative:400,700|Merriweather:400,700&display=swap" rel="stylesheet"> {% if title %}
+    <!-- <link href="{{ url_for('static', filename='search.css')}}" type="text/css" rel="stylesheet">
+ 
+    {% else %}
+    <link href="{{  url_for('static', filename='home.css')}}" type="text/css" rel="stylesheet">
+   
+    {% endif %} -->
+    {% block header %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='stylesheets/search.css') }}">
+</head>
+<body>
+    <navbar class="nav" id="ns" >
+        <a class="btn btn-outline-dark" href="./index.html" role="button" style="margin:0.5em 1em 1em 1em; height:fit-content; border-color: white;font-size:2em;">FOODZEE</a>
+       
+        <label for="loc" style="color:#F3F0D7; font-size:24px; margin:1.5em  0 0 13em;">Showing results in</label>
+        <input type="text" id="loc" name ="locality" value={{location}} placeholder={{location}} style="background-color:white; width:10em;height:2em;opacity:50%; font-size:24px;color:black; border-radius:20px; margin-top:1em; padding-left: 0.5em;" readonly >
+      
+    </navbar>
+      <div class="container restaurant-container" style="margin-top:15em; margin-bottom:10em;">
+        <ul class="list-unstyled">
+     
+            {% if restaurants_name | length > 0 %} {% for resrs in restaurants_name %}
+            <form  action="{{ url_for('order') }}" method="POST">
+            <li class="media mt-2 res-card" >
+                <img src="{{ resrs['url'] }}" width="250px" height="200px" class="mr-3" alt="...">
+                <div class="media-body">
+                    <textarea name="resname" id="" cols="20" rows="1" style="background-color:#C9CCD5; opacity: 0.7; border: 0; font-size:24px;" readonly>{{ resrs['name'] }}</textarea>
+                    <p>Rating: <span class="badge badge-success d-inline">{{ resrs['aggregate_rating'] }}</span></p>
+                    <div class="res-content">
+                        <input type="text" id="loc" name ="locality" value={{location}} placeholder={{location}} style="background-color:#C9CCD5;height:1em; width:10em;opacity:30%; font-size:24px;color:black;border: 0ch; border-radius:15px; padding-left: 0.5em;" readonly >
+                        <textarea name="address" id=""  cols="30" rows="1" style="background-color:#C9CCD5; opacity: 0.7; border: 0;" readonly>{{ resrs['address'] }}</textarea>
+                        <p><span class="timing">Timing: {{ resrs['timings'] }}</span></p>
+                        <p><span class="feature">Highlight: {{ resrs['feature'] }} </span></p>
+                        <button class="more-info">Order Now</button>
+                
+                    </div>
+                    
+                </div>
+            </li>
+        </form>
+            {% endfor %} {% else %}
+            <li class="mt-2">
+                <div class="text-center align-middle" style="color: white;">
+                    <h5>Sorry, No Result Found. :(</h5>
+                    <p>Try again</p>
+                </div>
+            </li>
+            {% endif %}
+        </ul>
+    </div>
+    <footer style="margin-top:15em;">
+        <hr style="display: block;
+        height: 1px;
+        border: 0;
+        border-top: 1px solid #FFF2F2;
+        margin: 2.5em 0;
+        padding: 0;">
+
+        <div id="footer-content">
+            <div id="footer-text" style="color:white;margin-left: 6cm ; margin-top:2em;">Developed by Anusha Ajay Bamzai</div>
+            <div class="footer-link">
+                <a href="https://github.com/anushabamzai"><img src="../static/git.png" alt="" srcset="" style="height: 25px;width:25px; margin:1.75em 0.2em 0 0.5em"></a>
+                <a href="https://www.linkedin.com/in/anusha-bamzai-15b868214"><img src="../static/linkedin.png" alt="" srcset="" style="height: 25px;width:25px; margin:1.75em 0.5em 0 0em"></a>
+            </div>
+
+    </footer>
+
+
+      <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+      {% endblock %}
+</body>
+</html>
