@@ -1,1 +1,0 @@
-encoding='unicode_escape'
